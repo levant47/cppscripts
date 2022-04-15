@@ -121,7 +121,7 @@ ParseSplitParametersResult parse_split_parameters(char* source)
     return result;
 }
 
-void SplitFile(int segment_size, const char* target_file_name, HANDLE target_file_handle)
+void split_file(int segment_size, const char* target_file_name, HANDLE target_file_handle)
 {
     auto target_file_name_length = c_string_length(target_file_name);
 
@@ -212,7 +212,7 @@ int main()
     {
         target_file_name += maybe_last_slash_index_in_target_path.index + 1;
     }
-    SplitFile(split_parameters.segment_size, target_file_name, target_file_handle);
+    split_file(split_parameters.segment_size, target_file_name, target_file_handle);
 
     CloseHandle(target_file_handle);
 
