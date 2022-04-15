@@ -63,44 +63,6 @@ int c_string_length(const char* string)
     return length;
 }
 
-struct ParseIntResult
-{
-    bool success;
-    int value;
-
-    static ParseIntResult fail()
-    {
-        ParseIntResult result;
-        result.success = false;
-        return result;
-    }
-};
-
-ParseIntResult parse_int_from_c_string(char* source)
-{
-    if (source[0] == '\0')
-    {
-        return ParseIntResult::fail();
-    }
-    int value = 0;
-    int i = 0;
-    do
-    {
-        if (!(source[i] >= '0' && source[i] <= '9'))
-        {
-            return ParseIntResult::fail();
-        }
-        value = value * 10 + source[i] - '0';
-        i++;
-    }
-    while (source[i] != '\0');
-
-    ParseIntResult result;
-    result.success = true;
-    result.value = value;
-    return result;
-}
-
 struct SplitParameters
 {
     int segment_size;
